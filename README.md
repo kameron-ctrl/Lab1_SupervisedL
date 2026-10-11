@@ -32,7 +32,7 @@ with 50 examples per animal class.
 | `height_cm` | shoulder height in centimeters |
 | `tail_to_body` | tail length divided by body length |
 
-**Label:** `animal` (<<list the classes, e.g. Rat, Dog, Lion, spider>>)
+**Label:** `Rat, Dog, Lion` 
 
 | File | Description |
 |---|---|
@@ -44,7 +44,7 @@ with 50 examples per animal class.
 ## Method
 1. Separate features (`X`) from labels (`y`).
 2. Split into training (70%) and test (30%) data with `stratify=y`.
-3. Train a `DecisionTreeClassifier` (`max_depth = <<value>>`, `random_state = 42`).
+3. Train a `DecisionTreeClassifier` (`max_depth = 1, `random_state = 42`).
 4. Predict the test data and evaluate with accuracy, a classification report
    and a confusion matrix.
 
@@ -61,22 +61,22 @@ model = joblib.load("models/decision_tree.joblib")
 ```
 
 ## Results
-**Test accuracy:** <<e.g. 74%>>
+**Test accuracy: 66.7%** 
 
 ![Labeled data](figures/01_labeled_data_scatter.png)
 *Each dot is an animal. The classes sit in different regions of the plot.*
 
 ![Decision tree](figures/02_decision_tree.png)
-*The yes/no rule(s) the model learned. First split feature: <<feature>>.*
+*The yes/no rule(s) the model learned. First split feature: weight_kg.*
 
 ![Confusion matrix](figures/03_confusion_matrix.png)
-*Rows = true animal, columns = predicted animal. Most confused classes: <<...>>.*
+*Rows = true animal, columns = predicted animal. Most confused classes: Lion misclassified as Dog.*
 
 ## Discussion
-1. **Why do we need labels?** The computer needs labels as a grader needs an answer key. Without them the computer has no way of know what each animal is or check whether it's correct or not
-2. **What would the model predict for a cat, and why is that a problem?** It would most likely say dog or maybeeven rat because it can only pick from the 3 animal choices. "I don't know" isn't a choice it has. 
+1. **Why do we need labels?** The computer needs labels as a grader needs an answer key. Without them the computer has no way of knowing what each animal is or check whether it's correct or not.
+2. **What would the model predict for a cat, and why is that a problem?** It would most likely say dog or maybe even rat because it can only pick from the 3 animal choices. "I don't know" isn't a choice it has. 
 3. **Which feature did the tree use first, and why?** It used weight(kg) first because it gives the cleanest and quickest seperation. 
-4. **How does `max_depth` affect accuracy?** The lower the depth the less amount of questoin it can ask. When the depth is higher the machine has the oppurtunity to ask follow up questions to ensure accuracy. 
+4. **How does `max_depth` affect accuracy?** The lower the depth the less amount of question it can ask. When the depth is higher the machine has the opportunity to ask follow up questions to ensure accuracy. 
 
 ## How to Run
 1. Open the project on the NRP JupyterHub.
